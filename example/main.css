@@ -772,3 +772,15 @@ textarea{
 .t-a-c{
   text-align:center;
 }
+
+.p-s {
+  padding-left: 4px;
+}
+.p-e {
+  padding-right: 4px;
+}
+
+.modal-body,
+.modal-footer {
+  margin-top: 10px;
+}

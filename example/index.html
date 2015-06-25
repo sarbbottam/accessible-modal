@@ -23,17 +23,24 @@
         <a href="https://github.com/sarbbottam/sheer" class="link">Sheer</a>
       </div>
     </div>
-    <div id="modal" class="modal hide">
+    <div id="modal" class="modal hide" aria-labelledby="modal-heading" aria-describedby="modal-description" role="dialog">
       <div class="modal-content p-a v-a-m">
-        <div id="modal-description"  class="clipped">Beginning of dialog window. It begins with a heading 1 called "Modal Heading". Escape will cancel and close the window.</div>
         <input id="button-close" class="button modal-close-button js-button-close" type="button" value="X" aria-label="close modal">
+        <div id="modal-description" class="clipped">Beginning of dialog window. It begins with a heading 1 called "Modal Heading". Escape will cancel and close the window.</div>
         <div class="modal-header">
-          <h1 class="text-lg"> Lorem ipsum</h1>
+          <h1 id="modal-heading" class="text-lg">Modal Heading</h1>
         </div>
-        <div class="modal-body m-t-12px">
-          Lorem ipsum dolor sit amet, vidit reque et usu, est te enim discere efficiantur. Id mei legere fabellas necessitatibus. Quod dolores maiestatis mea no, consul senserit in pro, omnis facilisi interpretaris quo et. Liber tollit noster quo no.
-
-          Vis ferri invidunt no, melius feugiat delicatissimi ea eum. Ius modus perfecto eu, ei malis etiam detraxit vel. Porro dignissim no vix, voluptua consequat ad vis. Eum nostro maiorum ut, mel in dicat debet. Ea brute posse epicurei vis, ne pri graeco integre.
+        <div class="modal-body">
+          Modal description.
+          Lorem ipsum dolor sit amet, vidit reque et usu, est te enim discere efficiantur.
+        </div>
+        <div class="row modal-footer">
+          <div class="col col-1-2 p-e">
+            <input type="button" class="button button-primary w-100 js-button-primary" value="OK">
+          </div>
+          <div class="col col-1-2 p-s">
+            <input type="button" class="button button-secondary w-100 js-button-secondary" value="Cancel">
+          </div>
         </div>
       </div>
     </div>
