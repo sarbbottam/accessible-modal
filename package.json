@@ -6,6 +6,7 @@
   "description": "accessible modal",
   "devDependencies": {
     "chai": "^3.0.0",
+    "coveralls": "^2.11.2",
     "grunt": "~0.4.2",
     "grunt-browserify": "^3.8.0",
     "grunt-cli": "~0.1.13",
@@ -29,7 +30,7 @@
   "scripts": {
     "test": "grunt js",
     "deploy": "./script/deploy.sh",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "repository": {
     "type": "git",
