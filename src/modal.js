@@ -61,11 +61,15 @@ Modal.prototype.init = function() {
   }
 
   if (primaryButton) {
-    primaryButton.addEventListener('click', primaryFunction);
+    primaryButton.addEventListener('click', function() {
+      self.primaryFunction();
+    });
   }
 
   if (secondaryButton) {
-    secondaryButton.addEventListener('click', secondaryFunction);
+    secondaryButton.addEventListener('click', function() {
+      self.secondaryFunction();
+    });
   }
 
   if (closeButton) {
