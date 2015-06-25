@@ -2,6 +2,8 @@ language: node_js
 node_js:
 - stable
 script: npm run-script deploy
+after_script:
+  - npm run coveralls
 env:
   global:
   - GH_REF: github.com/sarbbottam/accessible-modal

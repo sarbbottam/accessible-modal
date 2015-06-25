@@ -28,7 +28,8 @@
   },
   "scripts": {
     "test": "grunt js",
-    "deploy": "./script/deploy.sh"
+    "deploy": "./script/deploy.sh",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
