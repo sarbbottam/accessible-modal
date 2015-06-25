@@ -40,11 +40,18 @@ module.exports = function(grunt) {
             suite: ''
           }
         }
+      },
+
+      browserify: {
+        phoneaccount: {
+          src: ['example/common.js'],
+          dest: 'example/script.js'
+        }
       }
 
     });
 
-    grunt.task.run(['eslint', 'clean', 'karma:' + target]);
+    grunt.task.run(['eslint', 'clean', 'karma:' + target, 'browserify']);
 
   });
 
