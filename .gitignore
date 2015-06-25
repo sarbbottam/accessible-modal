@@ -13,9 +13,10 @@ Thumbs.db
 coverage
 test-results.xml
 
-# Dist #
-########
+# Generated files #
+###################
 dist
+example/main.js
 
 # Node #
 ########
