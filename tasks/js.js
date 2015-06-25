@@ -45,7 +45,7 @@ module.exports = function(grunt) {
       browserify: {
         phoneaccount: {
           src: ['example/common.js'],
-          dest: 'example/script.js'
+          dest: 'example/main.js'
         }
       }
 

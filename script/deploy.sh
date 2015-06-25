@@ -6,9 +6,9 @@ mkdir dist;
  git init
  git config user.name "sarbbottam"
  git config user.email "sarbbottam@gmail.com"
- cp ../example/modal.html ./index.html
- cp ../example/style.css ./style.css
- cp ../example/script.js ./script.js
+ cp ../example/index.html ./index.html
+ cp ../example/main.css ./main.css
+ cp ../example/main.js ./main.js
  git add .
  git commit -m "initial commit"
  git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages > /dev/null 2>&1
