@@ -73,7 +73,7 @@ Modal.prototype.init = function() {
   }
 
   if (closeButton) {
-    closeButton.addEventListener('click', function () {
+    closeButton.addEventListener('click', function() {
       self.hide();
     });
   }
