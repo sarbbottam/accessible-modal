@@ -47,8 +47,11 @@ Modal.prototype.show = function() {
   var self = this;
   this.modalContainer.classList.remove('hide');
   this.modalContainer.setAttribute('aria-hidden', 'false');
+  this.modalContainer.setAttribute('tabindex', '-1');
 
   this.mainContainer.setAttribute('aria-hidden', 'true');
+
+  this.modalContainer.focus();
   /*
    * Could not simulate KeyBoard event with desired keycode PhantomJS
    * Intergrate SauceLab to remove PhantomJS dependency
