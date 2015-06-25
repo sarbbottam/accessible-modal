@@ -44,10 +44,23 @@ function Modal(config) {
 }
 
 Modal.prototype.show = function() {
+  var self = this;
   this.modalContainer.classList.remove('hide');
   this.modalContainer.setAttribute('aria-hidden', 'false');
 
   this.mainContainer.setAttribute('aria-hidden', 'true');
+  /*
+   * Could not simulate KeyBoard event with desired keycode PhantomJS
+   * Intergrate SauceLab to remove PhantomJS dependency
+   */
+  /* istanbul ignore next */
+  function keydownHandler(e) {
+    if (e.keyCode === 27) {
+      self.hide();
+      document.removeEventListener('keydown', keydownHandler);
+    }
+  }
+  document.addEventListener('keydown', keydownHandler);
 };
 
 Modal.prototype.hide = function() {
