@@ -1,7 +1,9 @@
 language: node_js
 node_js:
-- stable
-script: npm run-script deploy
+  - stable
+script:
+  - npm test
+  - npm run-script deploy
 after_script:
   - npm run coveralls
 env:
