@@ -10,9 +10,6 @@ var closeButton = modalContainer.querySelector('.js-button-close');
 
 var showButton = document.getElementById('show-modal');
 
-// var primaryFunction;
-// var secondaryFunction;
-
 modal = new Modal({
   mainContainer: mainContainer,
   modalContainer: modalContainer,
@@ -22,6 +19,5 @@ modal = new Modal({
 });
 
 modal.init();
-
 
 showButton.addEventListener('click', modal.show.bind(modal));
