@@ -27,7 +27,7 @@
     "phantomjs": "^1.9.17"
   },
   "scripts": {
-    "start": "grunt js"
+    "test": "grunt js"
   },
   "repository": {
     "type": "git",
