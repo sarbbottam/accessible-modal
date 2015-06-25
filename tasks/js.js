@@ -4,7 +4,7 @@
 module.exports = function(grunt) {
 
   grunt.registerTask('js', 'lint test & compile javascripts', function(target) {
-    target = target || 'dev';
+    target = target || 'ci';
     grunt.initConfig({
 
       eslint: {
