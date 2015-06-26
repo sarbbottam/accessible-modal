@@ -114,7 +114,7 @@ describe('Modal', function () {
       assert.equal(mainContainer.getAttribute('aria-hidden'), 'true');
     });
 
-    it('should show the modal when modal.hide() is invoked', function() {
+    it('should hide the modal when modal.hide() is invoked', function() {
       modal.hide();
       assert.isTrue(modalContainer.classList.contains('hide'));
       assert.equal(modalContainer.getAttribute('aria-hidden'), 'true');
