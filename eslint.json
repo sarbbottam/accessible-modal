@@ -1,9 +1,15 @@
 {
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "mocha": true
+  },
+  "globals": {
+    "it": true,
+    "assert": false
   },
   "rules": {
-      "quotes": [1, "single"]
+    "quotes": [1, "single"],
+    "no-multi-str": 0
   }
 }
