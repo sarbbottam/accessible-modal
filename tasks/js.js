@@ -29,7 +29,7 @@ module.exports = function(grunt) {
         options: {
           configFile: './eslint.json'
         },
-        js: ['Gruntfile.js', 'tasks/*.js', 'src/*.js']
+        js: ['Gruntfile.js', 'tasks/*.js', 'src/*.js', 'polyfill/*.js', 'test/*.js']
       },
 
       clean: ['coverage'],
