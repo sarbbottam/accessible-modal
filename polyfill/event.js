@@ -1,3 +1,5 @@
+'use strict';
+
 function triggerKeydownEvent(element, keyCode) {
   var event = document.createEvent('Events');
 
@@ -12,15 +14,17 @@ function triggerKeydownEvent(element, keyCode) {
 }
 
 function triggerClickEvent(element) {
-  var event = document.createEvent("MouseEvent");
+  var event = document.createEvent('MouseEvent');
 
   event.initMouseEvent(
-      "click",
-      true /* bubble */, true /* cancelable */,
+      'click',
+      true, /* bubble */
+      true, /* cancelable */
       window, null,
       0, 0, 0, 0, /* coordinates */
       false, false, false, false, /* modifier keys */
-      0 /*left*/, null
+      0,/*left*/
+      null
   );
 
   element.dispatchEvent(event);
@@ -29,4 +33,4 @@ function triggerClickEvent(element) {
 module.exports = {
   triggerKeydownEvent: triggerKeydownEvent,
   triggerClickEvent: triggerClickEvent
-}
+};

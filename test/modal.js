@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Modal', function () {
   var markup = '\
     <div id="main"></div> \
@@ -20,7 +22,7 @@ describe('Modal', function () {
           </div> \
         </div> \
       </div> \
-    </div>'
+    </div>';
   var Modal = require('../src/modal');
   var modal;
   var wrapper;
