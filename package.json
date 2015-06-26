@@ -21,12 +21,10 @@
     "karma-coverage": "~0.3.1",
     "karma-junit-reporter": "~0.2.2",
     "karma-mocha": "~0.1.10",
-    "karma-phantomjs-launcher": "~0.2.0",
     "karma-sauce-launcher": "^0.2.11",
     "karma-threshold-reporter": "~0.1.15",
     "load-grunt-tasks": "~0.2.0",
-    "mocha": "^2.2.5",
-    "phantomjs": "^1.9.17"
+    "mocha": "^2.2.5"
   },
   "scripts": {
     "test": "grunt js",
