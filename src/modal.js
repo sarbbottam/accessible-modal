@@ -14,7 +14,6 @@ function Modal(config) {
 }
 
 Modal.prototype.show = function() {
-  var self = this;
   this.modalContainer.classList.remove('hide');
   this.modalContainer.setAttribute('aria-hidden', 'false');
   this.modalContainer.setAttribute('tabindex', '-1');
@@ -25,11 +24,10 @@ Modal.prototype.show = function() {
 
   function keydownHandler(e) {
     if (e.keyCode === 27) {
-      self.hide();
       document.removeEventListener('keydown', keydownHandler);
     }
   }
-  document.addEventListener('keydown', keydownHandler);
+  document.addEventListener('keydown', keydownHandler.bind(this));
 };
 
 Modal.prototype.hide = function() {
@@ -40,7 +38,7 @@ Modal.prototype.hide = function() {
 };
 
 Modal.prototype.init = function() {
-  var self = this;
+  var hide = this.hide;
   var primaryFunction = this.primaryFunction;
   var secondaryFunction = this.secondaryFunction;
 
@@ -49,29 +47,23 @@ Modal.prototype.init = function() {
   var closeButton = this.closeButton;
 
   if (!primaryFunction && typeof primaryFunction !== 'function') {
-    primaryFunction = this.primaryFunction = this.hide;
+    primaryFunction = hide;
   }
 
   if (!secondaryFunction && typeof secondaryFunction !== 'function') {
-    secondaryFunction = this.secondaryFunction = this.hide;
+    secondaryFunction = hide;
   }
 
   if (primaryButton) {
-    primaryButton.addEventListener('click', function() {
-      self.primaryFunction();
-    });
+    primaryButton.addEventListener('click', primaryFunction.bind(this));
   }
 
   if (secondaryButton) {
-    secondaryButton.addEventListener('click', function() {
-      self.secondaryFunction();
-    });
+    secondaryButton.addEventListener('click', secondaryFunction.bind(this));
   }
 
   if (closeButton) {
-    closeButton.addEventListener('click', function() {
-      self.hide();
-    });
+    closeButton.addEventListener('click', hide.bind(this));
   }
 
 };
