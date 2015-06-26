@@ -3,6 +3,24 @@
 
 module.exports = function(grunt) {
 
+  var pkg = grunt.file.readJSON('package.json');
+
+  var customLaunchers = {
+    'SL_Chrome': {
+      base: 'SauceLabs',
+      browserName: 'chrome'
+    },
+    'SL_InternetExplorer': {
+      base: 'SauceLabs',
+      browserName: 'internet explorer',
+      version: '10'
+    },
+    'SL_FireFox': {
+      base: 'SauceLabs',
+      browserName: 'firefox'
+    }
+  };
+
   grunt.registerTask('js', 'lint test & compile javascripts', function(target) {
     target = target || 'ci';
     grunt.initConfig({
@@ -22,7 +40,6 @@ module.exports = function(grunt) {
         },
         ci: {
           configFile: 'karma.conf.js',
-          browsers: ['PhantomJS'],
           coverageReporter: {
             reporters: [{
               type: 'lcov',
@@ -38,7 +55,14 @@ module.exports = function(grunt) {
           junitReporter: {
             outputFile: 'test-results.xml',
             suite: ''
-          }
+          },
+          reporters: ['progress', 'coverage', 'threshold', 'junit', 'saucelabs'],
+          sauceLabs: {
+            testName: pkg.name
+          },
+          captureTimeout: 120000,
+          customLaunchers: customLaunchers,
+          browsers: Object.keys(customLaunchers)
         }
       },
 
