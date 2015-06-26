@@ -36,8 +36,6 @@ describe('Modal', function () {
   var primaryFunction;
   var secondaryFunction;
 
-  var click;
-
   before(function() {
     wrapper = document.createElement('div');
     wrapper.innerHTML = markup;
@@ -49,13 +47,6 @@ describe('Modal', function () {
     primaryButton = modalContainer.querySelector('.js-button-primary');
     secondaryButton = modalContainer.querySelector('.js-button-secondary');
     closeButton = modalContainer.querySelector('.js-button-close');
-
-    click = new MouseEvent("click", {
-      bubbles: true,
-      cancelable: true,
-      view: window
-    });
-
   });
 
   beforeEach(function() {
@@ -145,7 +136,7 @@ describe('Modal', function () {
         }
       });
       modal.init();
-      primaryButton.dispatchEvent(click);
+      event.triggerClickEvent(primaryButton);
     });
 
   });
@@ -163,7 +154,7 @@ describe('Modal', function () {
         }
       });
       modal.init();
-      secondaryButton.dispatchEvent(click);
+      event.triggerClickEvent(secondaryButton);
     });
 
   });
@@ -177,7 +168,7 @@ describe('Modal', function () {
         closeButton: closeButton
       });
       modal.init();
-      closeButton.dispatchEvent(click);
+      event.triggerClickEvent(closeButton);
       assert.isTrue(modalContainer.classList.contains('hide'));
       assert.equal(modalContainer.getAttribute('aria-hidden'), 'true');
       assert.equal(mainContainer.getAttribute('aria-hidden'), 'false');

@@ -1,17 +1,32 @@
-function triggerKeydownEvent(el, keyCode) {
-  var eventObj = document.createEventObject ? document.createEventObject() : document.createEvent('Events');
+function triggerKeydownEvent(element, keyCode) {
+  var event = document.createEvent('Events');
 
-  if(eventObj.initEvent){
-    eventObj.initEvent('keydown', true, true);
+  if(event.initEvent){
+    event.initEvent('keydown', true, true);
   }
 
-  eventObj.keyCode = keyCode;
-  eventObj.which = keyCode;
+  event.keyCode = keyCode;
+  event.which = keyCode;
 
-  el.dispatchEvent ? el.dispatchEvent(eventObj) : el.fireEvent('onkeydown', eventObj);
+  element.dispatchEvent(event);
+}
 
+function triggerClickEvent(element) {
+  var event = document.createEvent("MouseEvent");
+
+  event.initMouseEvent(
+      "click",
+      true /* bubble */, true /* cancelable */,
+      window, null,
+      0, 0, 0, 0, /* coordinates */
+      false, false, false, false, /* modifier keys */
+      0 /*left*/, null
+  );
+
+  element.dispatchEvent(event);
 }
 
 module.exports = {
-  triggerKeydownEvent : triggerKeydownEvent
+  triggerKeydownEvent: triggerKeydownEvent,
+  triggerClickEvent: triggerClickEvent
 }
