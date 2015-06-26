@@ -22,11 +22,7 @@ Modal.prototype.show = function() {
   this.mainContainer.setAttribute('aria-hidden', 'true');
 
   this.modalContainer.focus();
-  /*
-   * Could not simulate KeyBoard event with desired keycode PhantomJS
-   * Intergrate SauceLab to remove PhantomJS dependency
-   */
-  /* istanbul ignore next */
+
   function keydownHandler(e) {
     if (e.keyCode === 27) {
       self.hide();

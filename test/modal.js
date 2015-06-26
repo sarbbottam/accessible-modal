@@ -24,6 +24,7 @@ describe('Modal', function () {
   var Modal = require('../src/modal');
   var modal;
   var wrapper;
+  var event = require('../polyfill/event');
   /* containers */
   var mainContainer;
   var modalContainer;
@@ -119,6 +120,14 @@ describe('Modal', function () {
       assert.isTrue(modalContainer.classList.contains('hide'));
       assert.equal(modalContainer.getAttribute('aria-hidden'), 'true');
       assert.equal(mainContainer.getAttribute('aria-hidden'), 'false');
+    });
+
+    it('should not hide the modal when any key other than esc key is pressed', function() {
+      event.triggerKeydownEvent(document.body, 8);
+    });
+
+    it('should hide the modal when esc key is pressed', function() {
+      event.triggerKeydownEvent(document.body, 27);
     });
 
   });
