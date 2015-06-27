@@ -14,6 +14,7 @@ function Modal(config) {
 }
 
 Modal.prototype.show = function() {
+  var self = this;
   this.modalContainer.classList.remove('hide');
   this.modalContainer.setAttribute('aria-hidden', 'false');
   this.modalContainer.setAttribute('tabindex', '-1');
@@ -24,10 +25,11 @@ Modal.prototype.show = function() {
 
   function keydownHandler(e) {
     if (e.keyCode === 27) {
+      self.hide();
       document.removeEventListener('keydown', keydownHandler);
     }
   }
-  document.addEventListener('keydown', keydownHandler.bind(this));
+  document.addEventListener('keydown', keydownHandler);
 };
 
 Modal.prototype.hide = function() {
