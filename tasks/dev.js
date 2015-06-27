@@ -13,7 +13,7 @@ module.exports = function(grunt) {
             'src/**/*.js',
             'test/**/*.js',
             'example/**/*.js',
-            '!example/script.js'
+            '!example/main.js'
           ],
           tasks: ['js'],
           options: {
