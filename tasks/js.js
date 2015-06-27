@@ -22,7 +22,7 @@ module.exports = function(grunt) {
   };
 
   grunt.registerTask('js', 'lint test & compile javascripts', function(target) {
-    target = target || 'ci';
+    target = target || 'dev';
     grunt.initConfig({
 
       eslint: {
