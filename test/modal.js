@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Modal', function () {
+describe('Modal', function() {
   var markup = '\
     <div id="main"></div> \
     <div id="modal" class="modal hide" aria-labelledby="modal-heading" aria-describedby="modal-description" role="dialog"> \
@@ -127,12 +127,12 @@ describe('Modal', function () {
 
   describe('primary button', function() {
 
-    it('should invoke the primary function, when clicked', function (done) {
+    it('should invoke the primary function, when clicked', function(done) {
       modal = new Modal({
         mainContainer: mainContainer,
         modalContainer: modalContainer,
         primaryButton: primaryButton,
-        primaryFunction: function () {
+        primaryFunction: function() {
           assert.isTrue(true);
           done();
         }
@@ -145,12 +145,12 @@ describe('Modal', function () {
 
   describe('secondary button', function() {
 
-    it('should invoke the secondary function, when clicked', function (done) {
+    it('should invoke the secondary function, when clicked', function(done) {
       modal = new Modal({
         mainContainer: mainContainer,
         modalContainer: modalContainer,
         secondaryButton: secondaryButton,
-        secondaryFunction: function () {
+        secondaryFunction: function() {
           assert.isTrue(true);
           done();
         }
@@ -163,7 +163,7 @@ describe('Modal', function () {
 
   describe('close button', function() {
 
-    it('should hide the modal, when clicked', function () {
+    it('should hide the modal, when clicked', function() {
       modal = new Modal({
         mainContainer: mainContainer,
         modalContainer: modalContainer,
