@@ -3,7 +3,7 @@
 function triggerKeydownEvent(element, keyCode) {
   var event = document.createEvent('Events');
 
-  if(event.initEvent){
+  if (event.initEvent) {
     event.initEvent('keydown', true, true);
   }
 

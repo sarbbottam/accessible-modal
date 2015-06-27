@@ -9,7 +9,8 @@
     "assert": false
   },
   "rules": {
-    "quotes": [1, "single"],
-    "no-multi-str": 0
+    "quotes": [2, "single"],
+    "no-multi-str": 0,
+    "space-before-blocks": [2, "always"]
   }
 }

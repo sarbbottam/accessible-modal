@@ -29,7 +29,13 @@ module.exports = function(grunt) {
         options: {
           configFile: './eslint.json'
         },
-        js: ['Gruntfile.js', 'tasks/*.js', 'src/*.js', 'polyfill/*.js', 'test/*.js']
+        js: [
+          'Gruntfile.js',
+          'tasks/*.js',
+          'src/*.js',
+          'polyfill/*.js',
+          'test/*.js'
+        ]
       },
 
       clean: ['coverage'],
@@ -56,7 +62,13 @@ module.exports = function(grunt) {
             outputFile: 'test-results.xml',
             suite: ''
           },
-          reporters: ['progress', 'coverage', 'threshold', 'junit', 'saucelabs'],
+          reporters: [
+            'progress',
+            'coverage',
+            'threshold',
+            'junit',
+            'saucelabs'
+          ],
           sauceLabs: {
             testName: pkg.name
           },
