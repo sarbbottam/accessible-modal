@@ -116,11 +116,14 @@ describe('Modal', function() {
     });
 
     it('should not hide the modal when any key other than esc key is pressed', function() {
+      modal.show();
       event.triggerKeydownEvent(document.body, 8);
+      assert.isFalse(modalContainer.classList.contains('hide'));
     });
 
     it('should hide the modal when esc key is pressed', function() {
       event.triggerKeydownEvent(document.body, 27);
+      assert.isTrue(modalContainer.classList.contains('hide'));
     });
 
   });
