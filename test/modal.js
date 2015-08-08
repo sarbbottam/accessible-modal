@@ -49,9 +49,7 @@ describe('Modal', function() {
     primaryButton = modalContainer.querySelector('.js-button-primary');
     secondaryButton = modalContainer.querySelector('.js-button-secondary');
     closeButton = modalContainer.querySelector('.js-button-close');
-  });
 
-  beforeEach(function() {
     primaryFunction = function noop() {};
     secondaryFunction = function noop() {};
     modal = new Modal({
@@ -63,6 +61,9 @@ describe('Modal', function() {
       primaryFunction: primaryFunction,
       secondaryFunction: secondaryFunction
     });
+
+    modal.init();
+
   });
 
   it('should be a function', function() {
@@ -71,32 +72,6 @@ describe('Modal', function() {
 
   it('should return an object', function() {
     assert.isObject(modal);
-  });
-
-  describe('init', function() {
-
-    it('should attach listeners to the buttons when buttons are available', function() {
-      modal.init();
-    });
-
-    it('should not attempt to attach listeners if buttons are not available', function() {
-      modal = new Modal({
-        mainContainer: mainContainer,
-        modalContainer: modalContainer,
-        primaryFunction: primaryFunction,
-        secondaryFunction: secondaryFunction
-      });
-      modal.init();
-    });
-
-    it('should default to hide function when no functions are passed', function() {
-      modal = new Modal({
-        mainContainer: mainContainer,
-        modalContainer: modalContainer
-      });
-      modal.init();
-    });
-
   });
 
   describe('show/hide functionalities', function() {

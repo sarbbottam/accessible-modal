@@ -13,8 +13,14 @@ function Modal(config) {
   this.secondaryFunction = config.secondaryFunction;
 }
 
+function keydownHandler(e) {
+  if (e.keyCode === 27) {
+    this.hide();
+    document.removeEventListener('keydown', this.keydownHandler);
+  }
+}
+
 Modal.prototype.show = function() {
-  var self = this;
   this.modalContainer.classList.remove('hide');
   this.modalContainer.setAttribute('aria-hidden', 'false');
   this.modalContainer.setAttribute('tabindex', '-1');
@@ -23,13 +29,7 @@ Modal.prototype.show = function() {
 
   this.modalContainer.focus();
 
-  function keydownHandler(e) {
-    if (e.keyCode === 27) {
-      self.hide();
-      document.removeEventListener('keydown', keydownHandler);
-    }
-  }
-  document.addEventListener('keydown', keydownHandler);
+  document.addEventListener('keydown', this.keydownHandler);
 };
 
 Modal.prototype.hide = function() {
@@ -47,6 +47,8 @@ Modal.prototype.init = function() {
   var primaryButton = this.primaryButton;
   var secondaryButton = this.secondaryButton;
   var closeButton = this.closeButton;
+
+  this.keydownHandler = keydownHandler.bind(this);
 
   if (!primaryFunction && typeof primaryFunction !== 'function') {
     primaryFunction = hide;
