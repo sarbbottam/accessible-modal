@@ -1,6 +1,8 @@
 'use strict';
 
 function Modal(config) {
+  var css;
+
   /* containers */
   this.mainContainer = config.mainContainer;
   this.modalContainer = config.modalContainer;
@@ -11,6 +13,14 @@ function Modal(config) {
   /* functions */
   this.primaryFunction = config.primaryFunction;
   this.secondaryFunction = config.secondaryFunction;
+
+  css = config.css;
+
+  /* istanbul ignore next */
+  this.css = {
+    hide: css && css.hide ? css.hide : 'hide'
+  };
+
 }
 
 function keydownHandler(e) {
@@ -21,7 +31,7 @@ function keydownHandler(e) {
 }
 
 Modal.prototype.show = function() {
-  this.modalContainer.classList.remove('hide');
+  this.modalContainer.classList.remove(this.css.hide);
   this.modalContainer.setAttribute('aria-hidden', 'false');
   this.modalContainer.setAttribute('tabindex', '-1');
 
@@ -33,7 +43,7 @@ Modal.prototype.show = function() {
 };
 
 Modal.prototype.hide = function() {
-  this.modalContainer.classList.add('hide');
+  this.modalContainer.classList.add(this.css.hide);
   this.modalContainer.setAttribute('aria-hidden', 'true');
 
   this.mainContainer.setAttribute('aria-hidden', 'false');
