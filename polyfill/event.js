@@ -1,6 +1,6 @@
 'use strict';
 
-function triggerKeydownEvent(element, keyCode) {
+function triggerKeydownEvent(element, keyCode, shiftKey) {
   var event = document.createEvent('Events');
 
   if (event.initEvent) {
@@ -9,6 +9,7 @@ function triggerKeydownEvent(element, keyCode) {
 
   event.keyCode = keyCode;
   event.which = keyCode;
+  event.shiftKey = shiftKey;
 
   element.dispatchEvent(event);
 }
