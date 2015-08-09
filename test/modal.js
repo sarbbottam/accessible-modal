@@ -5,7 +5,7 @@ describe('Modal', function() {
     <div id="main"></div> \
     <div id="modal" class="modal hide" aria-labelledby="modal-heading" aria-describedby="modal-description" role="dialog"> \
       <div class="modal-content v-a-m"> \
-        <input id="button-close" class="button button-close js-button-close" type="button" value="X" aria-label="close modal"> \
+        <input id="button-close" class="button button-close js-button-close js-focusable" type="button" value="X" aria-label="close modal"> \
         <div id="modal-description"  class="clipped">Beginning of dialog window. It begins with a heading 1 called "Modal Heading". Escape will cancel and close the window.</div> \
         <div class="modal-header"> \
           <h1 id="modal-heading" class="text-lg">Modal Heading</h1> \
@@ -15,10 +15,10 @@ describe('Modal', function() {
         </div> \
         <div class="row modal-footer"> \
           <div class="col col-1-2 p-e"> \
-            <input type="button" class="button button-primary w-100 js-button-primary" value="OK"> \
+            <input type="button" class="button button-primary w-100 js-button-primary js-focusable" value="OK"> \
           </div> \
           <div class="col col-1-2 p-s"> \
-            <input type="button" class="button button-secondary w-100 js-button-secondary" value="Cancel"> \
+            <input type="button" class="button button-secondary w-100 js-button-secondary js-focusable" value="Cancel"> \
           </div> \
         </div> \
       </div> \
@@ -38,6 +38,8 @@ describe('Modal', function() {
   var primaryFunction;
   var secondaryFunction;
 
+  var focusableNodeList;
+
   before(function() {
     wrapper = document.createElement('div');
     wrapper.innerHTML = markup;
@@ -49,6 +51,8 @@ describe('Modal', function() {
     primaryButton = modalContainer.querySelector('.js-button-primary');
     secondaryButton = modalContainer.querySelector('.js-button-secondary');
     closeButton = modalContainer.querySelector('.js-button-close');
+
+    focusableNodeList = Array.prototype.slice.call(modalContainer.querySelectorAll('.js-focusable'));
 
     primaryFunction = function noop() {};
     secondaryFunction = function noop() {};
@@ -152,6 +156,35 @@ describe('Modal', function() {
       assert.isTrue(modalContainer.classList.contains('hide'));
       assert.equal(modalContainer.getAttribute('aria-hidden'), 'true');
       assert.equal(mainContainer.getAttribute('aria-hidden'), 'false');
+    });
+
+  });
+
+  describe('tab navigation', function() {
+
+    it('should focus only the nodes withing the modal', function() {
+      modal = new Modal({
+        mainContainer: mainContainer,
+        modalContainer: modalContainer,
+        primaryButton: primaryButton,
+        secondaryButton: secondaryButton,
+        closeButton: closeButton,
+        focusableNodeList: focusableNodeList
+      });
+      modal.init();
+      modal.show();
+      event.triggerKeydownEvent(modalContainer, 9);
+      assert.equal(document.activeElement, closeButton);
+      event.triggerKeydownEvent(modalContainer, 9);
+      assert.equal(document.activeElement, primaryButton);
+      event.triggerKeydownEvent(modalContainer, 9);
+      assert.equal(document.activeElement, secondaryButton);
+      event.triggerKeydownEvent(modalContainer, 9);
+      assert.equal(document.activeElement, closeButton);
+      event.triggerKeydownEvent(modalContainer, 9, true);
+      assert.equal(document.activeElement, secondaryButton);
+      event.triggerKeydownEvent(modalContainer, 9, true);
+      assert.equal(document.activeElement, primaryButton);
     });
 
   });

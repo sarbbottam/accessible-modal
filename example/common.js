@@ -7,6 +7,7 @@ var modalContainer = document.getElementById('modal');
 var primaryButton = modalContainer.querySelector('.js-button-primary');
 var secondaryButton = modalContainer.querySelector('.js-button-secondary');
 var closeButton = modalContainer.querySelector('.js-button-close');
+var focusableNodeList = Array.prototype.slice.call(modalContainer.querySelectorAll('.js-focusable'));
 
 var showButton = document.getElementById('show-modal');
 
@@ -15,7 +16,8 @@ modal = new Modal({
   modalContainer: modalContainer,
   primaryButton: primaryButton,
   secondaryButton: secondaryButton,
-  closeButton: closeButton
+  closeButton: closeButton,
+  focusableNodeList: focusableNodeList
 });
 
 modal.init();

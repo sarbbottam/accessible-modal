@@ -14,6 +14,9 @@ function Modal(config) {
   this.primaryFunction = config.primaryFunction;
   this.secondaryFunction = config.secondaryFunction;
 
+  this.focusableNodeList = config.focusableNodeList || null;
+  this.focusableIndex = -1;
+
   css = config.css;
 
   /* istanbul ignore next */
@@ -24,9 +27,30 @@ function Modal(config) {
 }
 
 function keydownHandler(e) {
+  var focusableNodeList = this.focusableNodeList;
+  var focusableIndex = this.focusableIndex;
+
   if (e.keyCode === 27) {
     this.hide();
     document.removeEventListener('keydown', this.keydownHandler);
+  }
+
+  if (focusableNodeList && e.keyCode === 9) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.shiftKey) {
+      focusableIndex -= 1;
+      if (focusableIndex < 0) {
+        focusableIndex = focusableNodeList.length - 1;
+      }
+    } else {
+      focusableIndex += 1;
+      if (focusableIndex > focusableNodeList.length - 1) {
+        focusableIndex = 0;
+      }
+    }
+    focusableNodeList[focusableIndex].focus();
+    this.focusableIndex = focusableIndex;
   }
 }
 
