@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Index</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <div id="main" class="container p-b-40px">
+      <div class="banner text-xl">
+        Modal
+      </div>
+      <div class="row m-b-10px">
+        <div class="col col-1-1">
+          <button id="show-modal" type="button" class="button button-link h-a w-a p-0">Show modal</button>
+        </div>
+      </div>
+      <div class="text-sm p-f footer">
+        Developed with &#x2661; and
+        <a href="https://github.com/sarbbottam/sheer" class="link">Sheer</a>
+      </div>
+    </div>
+    <div id="modal" class="modal hide" aria-labelledby="modal-heading" aria-describedby="modal-description" role="dialog">
+      <div class="modal-content p-a v-a-m">
+        <button id="button-close" class="button modal-close-button js-button-close js-focusable" type="button">
+          <span class="clipped">close modal</span>X
+        </button>
+        <div id="modal-description" class="clipped">Beginning of dialog window. It begins with a heading 1 called "Modal Heading". Escape will cancel and close the window.</div>
+        <div class="modal-header">
+          <h1 id="modal-heading" class="text-lg">Modal Heading</h1>
+        </div>
+        <div class="modal-body">
+          Modal description.
+          Lorem ipsum dolor sit amet, vidit reque et usu, est te enim discere efficiantur.
+        </div>
+        <div class="row modal-footer">
+          <div class="col col-1-2 p-e">
+            <button type="button" class="button button-primary w-100 js-button-primary js-focusable">OK</button>
+          </div>
+          <div class="col col-1-2 p-s">
+            <button type="button" class="button button-secondary w-100 js-button-secondary js-focusable">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
