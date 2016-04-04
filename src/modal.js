@@ -17,6 +17,8 @@ function Modal(config) {
   this.focusableNodeList = config.focusableNodeList || null;
   this.focusableIndex = -1;
 
+  this.itemToBeFocusedOnModalDismissal = config.itemToBeFocusedOnModalDismissal;
+
   css = config.css;
 
   /* istanbul ignore next */
@@ -71,6 +73,9 @@ Modal.prototype.hide = function() {
   this.modalContainer.setAttribute('aria-hidden', 'true');
 
   this.mainContainer.setAttribute('aria-hidden', 'false');
+  if (this.itemToBeFocusedOnModalDismissal) {
+    this.itemToBeFocusedOnModalDismissal.focus();
+  }
 };
 
 Modal.prototype.init = function() {

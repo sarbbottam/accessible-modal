@@ -2,7 +2,9 @@
 
 describe('Modal', function() {
   var markup = '\
-    <div id="main"></div> \
+    <div id="main"> \
+      <button id="to-be-focused" tabindex="-1">To be  focused</button> \
+    </div> \
     <div id="modal" class="modal hide" aria-labelledby="modal-heading" aria-describedby="modal-description" role="dialog"> \
       <div class="modal-content v-a-m"> \
         <input id="button-close" class="button button-close js-button-close js-focusable" type="button" value="X" aria-label="close modal"> \
@@ -30,6 +32,7 @@ describe('Modal', function() {
   /* containers */
   var mainContainer;
   var modalContainer;
+  var itemToBeFocusedOnModalDismissal;
   /* buttons */
   var primaryButton;
   var secondaryButton;
@@ -47,6 +50,7 @@ describe('Modal', function() {
     /* containers */
     mainContainer = document.getElementById('main');
     modalContainer = document.getElementById('modal');
+    itemToBeFocusedOnModalDismissal = document.getElementById('to-be-focused');
     /* buttons */
     primaryButton = modalContainer.querySelector('.js-button-primary');
     secondaryButton = modalContainer.querySelector('.js-button-secondary');
@@ -63,7 +67,8 @@ describe('Modal', function() {
       secondaryButton: secondaryButton,
       closeButton: closeButton,
       primaryFunction: primaryFunction,
-      secondaryFunction: secondaryFunction
+      secondaryFunction: secondaryFunction,
+      itemToBeFocusedOnModalDismissal: itemToBeFocusedOnModalDismissal
     });
 
     modal.init();
@@ -103,6 +108,12 @@ describe('Modal', function() {
     it('should hide the modal when esc key is pressed', function() {
       event.triggerKeydownEvent(document.body, 27);
       assert.isTrue(modalContainer.classList.contains('hide'));
+    });
+
+    it('should focus the itemToBeFocusedOnModalDismissal on modal dismisaal', function() {
+      modal.show();
+      event.triggerKeydownEvent(document.body, 27);
+      assert.equal(document.activeElement, itemToBeFocusedOnModalDismissal);
     });
 
   });

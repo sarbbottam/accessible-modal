@@ -17,7 +17,8 @@ modal = new Modal({
   primaryButton: primaryButton,
   secondaryButton: secondaryButton,
   closeButton: closeButton,
-  focusableNodeList: focusableNodeList
+  focusableNodeList: focusableNodeList,
+  itemToBeFocusedOnModalDismissal: showButton
 });
 
 modal.init();
